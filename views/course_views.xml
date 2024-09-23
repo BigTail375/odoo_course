@@ -1,0 +1,49 @@
+<!-- Tree View -->
+<odoo>
+    <record id="view_course_tree" model="ir.ui.view">
+        <field name="name">course.data.tree</field>
+        <field name="model">course.data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="duration"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_course_form" model="ir.ui.view">
+        <field name="name">course.data.form</field>
+        <field name="model">course.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="duration"/>
+                        <field name="instructors"/>
+                        <field name="price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Add Action to the Menu -->
+    <record id="action_course" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">course.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a new course
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item for the Course Model -->
+    <menuitem id="menu_course_root" name="Courses"/>
+    <menuitem id="menu_course" name="Manage Courses" parent="menu_course_root" action="action_course"/>
+</odoo>
